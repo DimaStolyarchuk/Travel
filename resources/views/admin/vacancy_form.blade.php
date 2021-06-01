@@ -18,13 +18,20 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Форма для нової головної сторинки</h4>
+                            <h4 class="card-title">Форма для нової вакансії</h4>
                             <table class="table">
                                 <div class="container-fluid">
-                                    <form class="form-horizontal" role="form" action="{{ route('save_about') }}" method="POST" enctype="multipart/form-data">
+                                    <form class="form-horizontal" role="form" action="{{ route('save_vacancy') }}" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" name="id" value="{{ isset($dataAbout->id) ? $dataAbout->id : '' }}">
+                                        <input type="hidden" name="id" value="{{ isset($dataVacancy->id) ? $dataVacancy->id : '' }}">
                                         <div class="card-body">
+                                            <div class="form-group row">
+                                                <label for="fname" >Зображення</label>
+                                                <div class="col-sm-9">
+                                                    <input name="image" type="file" class="form-control" id="fname"
+                                                           placeholder="Зображення">
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="email1">Титулка</label>
                                                 <div class="col-sm-9">
@@ -39,25 +46,18 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="fname" >Зображення</label>
-                                                <div class="col-sm-9">
-                                                    <input name="image" type="file" class="form-control" id="fname"
-                                                           placeholder="Зображення">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
                                                 <label for="email1">Активність</label>
                                                 <div class="col-sm-9">
                                                     <select name="action">
-                                                        <option value="0" @if( isset($dataAbout->action) && $dataAbout->action == 0) selected @endif>No</option>
-                                                        <option value="1" @if( isset($dataAbout->action) && $dataAbout->action == 1) selected @endif>Yes</option>
+                                                        <option value="0" @if( isset($dataVacancy->action) && $dataVacancy->action == 0) selected @endif>No</option>
+                                                        <option value="1" @if( isset($dataVacancy->action) && $dataVacancy->action == 1) selected @endif>Yes</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="cono1">Преорітет</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="priority" value="{{ $dataAbout->priority ?? '' }}" class="form-control" id="cono1"
+                                                    <input type="text" name="priority" value="{{ $dataVacancy->priority ?? '' }}" class="form-control" id="cono1"
                                                            placeholder="Для кого?">
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a href="{{ route('admin_about') }}" >НАЗАД</a>
+                                    <a href="{{ route('admin_vacancy') }}" >НАЗАД</a>
                                 </div>
                             </table>
                         </div>
@@ -113,6 +113,7 @@
 </body>
 
 </html>
+
 
 
 

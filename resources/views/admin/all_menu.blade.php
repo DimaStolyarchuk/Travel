@@ -28,15 +28,15 @@
                 <span class="menu-title">БЛОГ(BLOG)</span>
             </a>
         </li>
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{ route('admin_vacancy') }}">--}}
-{{--                <span class="menu-title">ВАКАНСІЇ(VACANCY)</span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{ route('admin_contacts') }}">--}}
-{{--                <span class="menu-title">КОНТАКТИ(CONTACTS)</span>--}}
-{{--            </a>--}}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_vacancy') }}">
+                <span class="menu-title">ВАКАНСІЇ(VACANCY)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_contacts') }}">
+                <span class="menu-title">КОНТАКТИ(CONTACTS)</span>
+            </a>
         </li>
     </ul>
 </nav>

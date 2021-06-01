@@ -11,39 +11,38 @@ class VacancyController extends Controller
 {
     public function vacancy(){
         $dataVacancys = Vacancy::get();
-        return view('admin.vacancy', compact('dataVacancys'));
+        return view('admin.vacancies', compact('dataVacancys'));
     }
-    public function about_form(){
+    public function vacancy_form(){
         $dataVacancy = [];
         return view('admin.vacancy_form', compact('dataVacancy'));
     }
-    public function saveabout(Request $request)
+    public function savevacancy(Request $request)
     {
         $request->file('image')->store('unloads', 'public');
 
-        $dataAbout = $request->all();
-        About::updateOrCreate([
-            'id' => $dataAbout['id'],
+        $dataVacancy = $request->all();
+        Vacancy::updateOrCreate([
+            'id' => $dataVacancy['id'],
         ],[
-            'title' => $dataAbout['title'],
-            'description' => $dataAbout['description'],
             'image' => $request->file('image')->getClientOriginalName(),
-            'action' => $dataAbout['action'],
-            'priority' => $dataAbout['priority'],
+            'title' => $dataVacancy['title'],
+            'description' => $dataVacancy['description'],
+            'action' => $dataVacancy['action'],
+            'priority' => $dataVacancy['priority'],
 
         ]);
         return back();
     }
-    public function edit_about($id)
+    public function edit_vacancy($id)
     {
-        $dataAbout = About::where('id', $id)->first();
-        return view('admin.edit_about', compact('dataAbout'));
-
+        $dataVacancy = Vacancy::where('id', $id)->first();
+        return view('admin.edit_vacancy', compact('dataVacancy'));
     }
 
-    public function delete_about($id)
+    public function delete_vacancy($id)
     {
-        About::where('id', $id)->delete();
+        Vacancy::where('id', $id)->delete();
         return back();
     }
 }

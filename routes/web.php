@@ -48,14 +48,15 @@ Route::post('/save_blog', 'Admin\BlogController@saveblog')->name('save_blog');
 Route::get('/blog_edit/{id}', 'Admin\BlogController@edit_blog')->name('edit_blog');
 Route::get('/blog_delete/{id}', 'Admin\BlogController@delete_blog')->name('delete_blog');
 
-Route::get('/admin_contact', 'Admin\ContactsController@contact')->name('admin_contact');
-Route::get('/contact_form', 'Admin\ContactsController@contact_form')->name('contact_form');
-Route::post('/save_contact', 'Admin\ContactsController@savecontact')->name('save_contact');
-Route::get('/contact_edit/{id}', 'Admin\ContactsController@edit_contact')->name('contact_edit');
-Route::get('/contact_delete/{id}', 'Admin\ContactsController@delete_contact')->name('contact_delete');
+Route::get('/admin_contacts', 'Admin\ContactsController@contacts')->name('admin_contacts');
+Route::get('/contacts_form', 'Admin\ContactsController@contacts_form')->name('contacts_form');
+Route::post('/save_contacts', 'Admin\ContactsController@savecontacts')->name('save_contacts');
+Route::post('/save_contactsmail', 'Admin\ContactsController@savecontactsmail')->name('save_contactsmail');
+Route::get('/contacts_edit/{id}', 'Admin\ContactsController@edit_contacts')->name('edit_contacts');
+Route::get('/contacts_delete/{id}', 'Admin\ContactsController@delete_contacts')->name('delete_contacts');
 
-Route::get('/vacancy', 'Admin\VacancyController@vacancy')->name('admin_vacancy');
+Route::get('/admin_vacancy', 'Admin\VacancyController@vacancy')->name('admin_vacancy');
 Route::get('/vacancy_form', 'Admin\VacancyController@vacancy_form')->name('vacancy_form');
-Route::post('/vacancy_blog', 'Admin\VacancyController@savevacancy')->name('vacancy_blog');
+Route::post('/save_vacancy', 'Admin\VacancyController@savevacancy')->name('save_vacancy');
 Route::get('/vacancy_edit/{id}', 'Admin\VacancyController@edit_vacancy')->name('vacancy_edit');
 Route::get('/vacancy_delete/{id}', 'Admin\VacancyController@delete_vacancy')->name('vacancy_delete');

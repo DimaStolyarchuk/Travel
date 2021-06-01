@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\About;
 use App\Blog;
 use App\ContactMap;
+use App\Contacts;
 use App\Home;
 use App\People;
 use App\Tours;
@@ -36,15 +37,15 @@ class PageController extends Controller
         return view('blog', compact('dataBlogs'));
     }
 
-    public function vacancy()
+    public function vacancies()
     {
         $dataVacancys = Vacancy::get();
-        return view('vacancy', compact('dataVacancys'));
+        return view('vacancies', compact('dataVacancys'));
     }
 
     public function contact()
     {
-        $dataContacts = Vacancy::get();
+        $dataContacts = Contacts::get();
         return view('contact', compact('dataContacts'));
     }
 }

@@ -3,46 +3,69 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Contacts;
+use App\ContactsMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactsController extends Controller
 {
-    public function contact(){
+    public function contacts(){
         $dataContacts = Contacts::get();
-        return view('admin.about', compact('dataContacts'));
+        return view('admin.contacts', compact('dataContacts'));
     }
-    public function about_form(){
-        $dataAbout = [];
-        return view('admin.about_form', compact('dataAbout'));
+    public function contacts_form(){
+        $dataContact = [];
+        return view('admin.contacts_form', compact('dataContact'));
     }
-    public function saveabout(Request $request)
+    public function savecontacts(Request $request)
     {
         $request->file('image')->store('unloads', 'public');
 
-        $dataAbout = $request->all();
-        About::updateOrCreate([
-            'id' => $dataAbout['id'],
+        $dataContact = $request->all();
+        Contacts::updateOrCreate([
+            'id' => $dataContact['id'],
         ],[
-            'title' => $dataAbout['title'],
-            'description' => $dataAbout['description'],
             'image' => $request->file('image')->getClientOriginalName(),
-            'action' => $dataAbout['action'],
-            'priority' => $dataAbout['priority'],
+            'phone' => $dataContact['phone'],
+            'description_1' => $dataContact['description_1'],
+            'description_2' => $dataContact['description_2'],
+            'description_3' => $dataContact['description_3'],
+            'action' => $dataContact['action'],
+            'priority' => $dataContact['priority'],
 
         ]);
         return back();
     }
-    public function edit_about($id)
+    public function edit_contacts($id)
     {
-        $dataAbout = About::where('id', $id)->first();
-        return view('admin.edit_about', compact('dataAbout'));
+        $dataContact = Contacts::where('id', $id)->first();
+        return view('admin.edit_contact', compact('dataContact'));
 
     }
 
-    public function delete_about($id)
+    public function delete_contacts($id)
     {
-        About::where('id', $id)->delete();
+        Contacts::where('id', $id)->delete();
         return back();
+    }
+
+    public function savecontactsmail(Request $request){
+        $dataContactsMail = $request->all();
+        ContactsMail::Create([
+            'name' => $dataContactsMail['name'],
+            'email' => $dataContactsMail['email'],
+            'message' => $dataContactsMail['message'],
+        ]);
+        $this->mail();
+        return back();
+    }
+
+    public function mail(){
+        Mail::send('emails.welcome', ['hello' => 'user'], function ($message) {
+            $message->from('test@i.ua');
+            $message->to('user@i.ua');
+            $message->subject('Hello');
+        });
     }
 }

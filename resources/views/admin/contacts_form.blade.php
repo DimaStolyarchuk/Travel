@@ -18,46 +18,58 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Форма для нової головної сторинки</h4>
+                            <h4 class="card-title">Форма для нових контактів</h4>
                             <table class="table">
                                 <div class="container-fluid">
-                                    <form class="form-horizontal" role="form" action="{{ route('save_about') }}" method="POST" enctype="multipart/form-data">
+                                    <form class="form-horizontal" role="form" action="{{ route('save_contacts') }}" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" name="id" value="{{ isset($dataAbout->id) ? $dataAbout->id : '' }}">
+                                        <input type="hidden" name="id" value="{{ isset($dataContact->id) ? $dataContact->id : '' }}">
+                                        <div class="form-group row">
+                                            <label for="fname" >Зображення</label>
+                                            <div class="col-sm-9">
+                                                <input name="image" type="file" class="form-control" id="fname"
+                                                       placeholder="Зображення">
+                                            </div>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group row">
-                                                <label for="email1">Титулка</label>
+                                                <label for="email1">Телефон</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="title" class="form-control" id="email1"
-                                                           placeholder="Титулка">
+                                                    <input type="text" name="phone" class="form-control" id="email1"
+                                                           placeholder="Телефон">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="cono1">Опис</label>
+                                                <label for="cono1">Опис_1</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" name="description"></textarea>
+                                                    <textarea class="form-control" name="description_1"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="fname" >Зображення</label>
+                                                <label for="cono1">Опис_2</label>
                                                 <div class="col-sm-9">
-                                                    <input name="image" type="file" class="form-control" id="fname"
-                                                           placeholder="Зображення">
+                                                    <textarea class="form-control" name="description_2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="cono1">Опис_3</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" name="description_3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="email1">Активність</label>
                                                 <div class="col-sm-9">
                                                     <select name="action">
-                                                        <option value="0" @if( isset($dataAbout->action) && $dataAbout->action == 0) selected @endif>No</option>
-                                                        <option value="1" @if( isset($dataAbout->action) && $dataAbout->action == 1) selected @endif>Yes</option>
+                                                        <option value="0" @if( isset($dataContact->action) && $dataContact->action == 0) selected @endif>No</option>
+                                                        <option value="1" @if( isset($dataContact->action) && $dataContact->action == 1) selected @endif>Yes</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="cono1">Преорітет</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="priority" value="{{ $dataAbout->priority ?? '' }}" class="form-control" id="cono1"
+                                                    <input type="text" name="priority" value="{{ $dataContact->priority ?? '' }}" class="form-control" id="cono1"
                                                            placeholder="Для кого?">
                                                 </div>
                                             </div>
@@ -68,7 +80,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a href="{{ route('admin_about') }}" >НАЗАД</a>
+                                    <a href="{{ route('admin_contacts') }}" >НАЗАД</a>
                                 </div>
                             </table>
                         </div>

@@ -12,15 +12,15 @@
                 <li><a href="{{ route('about') }}">Про нас</a></li>
                 <li><a href="{{ route('tours') }}">Тури</a></li>
                 <li><a href="{{ route('blog') }}">Блог</a></li>
-                <li><a href="{{ route('vacancies') }}">Вакансії</a>
+                <li><a>Вакансії</a>
                     <ul class="sub-menu">
-                        <li><a href="portfolio-item.html">Туроператор</a></li>
-                        <li><a href="blog-single.html">Адміністратор</a></li>
-                        <li><a href="shop-single.html">Прибиральнік</a></li>
-                        <li><a href="portfolio-category.html">Системний адміністратор</a></li>
+{{--                        @foreach($Vacancies as $dataTour)--}}
+                        <li><a href="{{ route('vacancies') }}">Менеджер</a></li>
+                        <li><a href="{{ route('vacancies') }}">Оператор</a></li>
+{{--                        @endforeach--}}
                     </ul>
                 </li>
-                <li><a href={{ route('contact') }}">Контакти</a></li>
+                <li><a href={{ route('contact') }}>Контакти</a></li>
             </ul>
         </div>
     </nav>

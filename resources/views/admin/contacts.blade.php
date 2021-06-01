@@ -18,32 +18,36 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('about_form') }}">Нова інформація</a>
+                            <a href="{{ route('contacts_form') }}">Нові контанти</a>
                             <table class="table">
                                 <thead>
                                 <th scope="col">#</th>
-                                <th scope="col">Титулка</th>
-                                <th scope="col">Опис</th>
                                 <th scope="col">Зображення</th>
+                                <th scope="col">Телефон</th>
+                                <th scope="col">Опис_1</th>
+                                <th scope="col">Опис_2</th>
+                                <th scope="col">Опис_3</th>
                                 <th scope="col">Активність</th>
                                 <th scope="col">Преорітет</th>
                                 <th scope="col">Редагування/Видалення</th>
                                 </tr>
                                 </thead>
-                                @foreach($dataAbouts as $dataAbout)
+                                @foreach($dataContacts as $dataContact)
                                     <tr>
-                                        <th scope="row">{{$dataAbout->id}}</th>
-                                        <td>{{$dataAbout->title}}</td>
-                                        <td>{{$dataAbout->description}}</td>
-                                        <td>{{$dataAbout->image}}</td>
-                                        <td>{{$dataAbout->action}}</td>
-                                        <td>{{$dataAbout->priority}}</td>
+                                        <th scope="row">{{$dataContact->id}}</th>
+                                        <td>{{$dataContact->image}}</td>
+                                        <td>{{$dataContact->phone}}</td>
+                                        <td>{{$dataContact->description_1}}</td>
+                                        <td>{{$dataContact->description_2}}</td>
+                                        <td>{{$dataContact->description_3}}</td>
+                                        <td>{{$dataContact->action}}</td>
+                                        <td>{{$dataContact->priority}}</td>
                                         <td>
-                                            <a href="{{ route('edit_about', ['id' => $dataAbout->id]) }}">
-                                               edit
+                                            <a href="{{ route('edit_contacts', ['id' => $dataContact->id]) }}">
+                                                edit
                                             </a>
-                                                /
-                                            <a href="{{ route('delete_about', ['id' => $dataAbout->id]) }}">
+                                            /
+                                            <a href="{{ route('delete_contacts', ['id' => $dataContact->id]) }}">
                                                 delete
                                             </a>
                                         </td>
@@ -92,4 +96,5 @@
 </body>
 
 </html>
+
 
