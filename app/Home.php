@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Home extends Model
 {
-    protected $fillable = ['image', 'title', 'description_1','description_2', 'description_3', 'action', 'priority'];
+
+    protected $fillable = ['image', 'title', 'action', 'priority'];
     protected $guarded = [];
+
+    public function infos()
+    {
+        return $this->belongsToMany(Info::class);
+    }
 }

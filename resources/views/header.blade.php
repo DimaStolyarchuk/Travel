@@ -14,10 +14,9 @@
                 <li><a href="{{ route('blog') }}">Блог</a></li>
                 <li><a>Вакансії</a>
                     <ul class="sub-menu">
-{{--                        @foreach($Vacancies as $dataTour)--}}
-                        <li><a href="{{ route('vacancies') }}">Менеджер</a></li>
-                        <li><a href="{{ route('vacancies') }}">Оператор</a></li>
-{{--                        @endforeach--}}
+                        @foreach($vacancies as $dataTour)
+                        <li><a href="{{ route('vacancies', ['id' => $dataTour->id]) }}">{{ $dataTour->title }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href={{ route('contact') }}>Контакти</a></li>

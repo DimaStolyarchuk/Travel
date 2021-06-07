@@ -18,38 +18,35 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('home_form') }}">Нова головна сторинка</a>
+                            <a href="{{ route('info_form') }}">Нова інформація</a>
                             <table class="table">
-                            <thead>
+                                <thead>
                                 <th scope="col">#</th>
-                                <th scope="col">Зображення</th>
-                                <th scope="col">Титулка</th>
-                                <th scope="col">Активність</th>
+                                <th scope="col">Інформація</th>
                                 <th scope="col">Преорітет</th>
                                 <th scope="col">Редагування/Видалення</th>
-                            </tr>
-                            </thead>
-                                @foreach($DataHomes as $dataHome)
+                                </tr>
+                                </thead>
+                                @foreach($dataInfos as $dataInfo)
                                     <tr>
-                                        <th scope="row">{{$dataHome->id}}</th>
-                                        <td>{{$dataHome->image}}</td>
-                                        <td>{{$dataHome->title}}</td>
-                                        <td>{{$dataHome->action}}</td>
-                                        <td>{{$dataHome->priority}}</td>
+                                        <th scope="row">{{$dataInfo->id}}</th>
+                                        <td>{{$dataInfo->description}}</td>
+                                        <td>{{$dataInfo->action}}</td>
+                                        <td>{{$dataInfo->priority}}</td>
                                         <td>
-                                            <a href="{{ route('edit_home', ['id' => $dataHome->id]) }}">
+                                            <a href="{{ route('edit_info', ['id' => $dataInfo->id]) }}">
                                                 <i class="me-2 mdi mdi-credit-card-scan"></i>
                                                 edit
                                             </a>
                                             /
-                                            <a href="{{ route('delete_home', ['id' => $dataHome->id]) }}">
+                                            <a href="{{ route('delete_info', ['id' => $dataInfo->id]) }}">
                                                 <i class="me-2 mdi mdi-delete"></i>
                                                 delete
                                             </a>
                                         </td>
                                     </tr>
                                 @endforeach
-                                </table>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -92,3 +89,4 @@
 </body>
 
 </html>
+

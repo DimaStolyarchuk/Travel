@@ -37,9 +37,10 @@ class PageController extends Controller
         return view('blog', compact('dataBlogs'));
     }
 
-    public function vacancies()
+    public function vacancies($id)
     {
-        $dataVacancys = Vacancy::get();
+        //$dataVacancys = Vacancy::where('id', $id)->first();
+        $dataVacancys = Vacancy::find($id);
         return view('vacancies', compact('dataVacancys'));
     }
 

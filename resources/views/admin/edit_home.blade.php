@@ -29,6 +29,7 @@
                                                 <label for="fname" >Зображення</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" name="image" class="form-control" id="fname" value="{{$dataHome->image ?? ''}}">
+                                                    <input type="hidden" name="image" value="{{$dataHome->image}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -38,21 +39,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="cono1">Перший опис</label>
+                                                <label for="email1">Інформація</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="description_1" class="form-control" id="cono1" value="{{$dataHome->description_1 ?? ''}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="cono1">Другий опис</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="description_2" class="form-control" id="cono1" value="{{$dataHome->description_2 ?? ''}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="cono1">Третій опис</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="description_3" class="form-control" id="cono1" value="{{$dataHome->description_3 ?? ''}}">
+                                                    <select name="info_id[]" multiple>
+                                                        @foreach($dataInfos as $dataInfo)
+                                                            <option value="{{ $dataInfo->id ?? ''}}">{{ $dataInfo->description ?? ''}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

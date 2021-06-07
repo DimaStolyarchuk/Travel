@@ -12,6 +12,7 @@ class ContactsController extends Controller
 {
     public function contacts(){
         $dataContacts = Contacts::get();
+
         return view('admin.contacts', compact('dataContacts'));
     }
     public function contacts_form(){
@@ -57,14 +58,14 @@ class ContactsController extends Controller
             'email' => $dataContactsMail['email'],
             'message' => $dataContactsMail['message'],
         ]);
-        $this->mail();
+        $this->mail($dataContactsMail);
         return back();
     }
 
-    public function mail(){
-        Mail::send('emails.welcome', ['hello' => 'user'], function ($message) {
+    public function mail($data){
+        Mail::send('emails.welcome', compact('data'), function ($message) use ($data){
             $message->from('test@i.ua');
-            $message->to('user@i.ua');
+            $message->to($data['email']);
             $message->subject('Hello');
         });
     }

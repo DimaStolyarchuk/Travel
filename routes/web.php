@@ -19,7 +19,7 @@ Route::get('/', 'PageController@index')->name('home_index');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/tours', 'PageController@tours')->name('tours');
 Route::get('/blog', 'PageController@blog')->name('blog');
-Route::get('/vacancies', 'PageController@vacancies')->name('vacancies');
+Route::get('/vacancies/{id}', 'PageController@vacancies')->name('vacancies');
 Route::get('/contact', 'PageController@contact')->name('contact');
 
 Route::get('/admin', 'Admin\AdminHomeController@index')->name('index');
@@ -60,3 +60,9 @@ Route::get('/vacancy_form', 'Admin\VacancyController@vacancy_form')->name('vacan
 Route::post('/save_vacancy', 'Admin\VacancyController@savevacancy')->name('save_vacancy');
 Route::get('/vacancy_edit/{id}', 'Admin\VacancyController@edit_vacancy')->name('vacancy_edit');
 Route::get('/vacancy_delete/{id}', 'Admin\VacancyController@delete_vacancy')->name('vacancy_delete');
+
+Route::get('/admin_info', 'Admin\InfoController@info')->name('admin_info');
+Route::get('/info_form', 'Admin\InfoController@info_form')->name('info_form');
+Route::post('/save_info', 'Admin\InfoController@saveinfo')->name('save_info');
+Route::get('/info_edit/{id}', 'Admin\InfoController@edit_info')->name('edit_info');
+Route::get('/info_delete/{id}', 'Admin\InfoController@delete_info')->name('delete_info');

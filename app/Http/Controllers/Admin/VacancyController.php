@@ -6,6 +6,7 @@ use App\About;
 use App\Http\Controllers\Controller;
 use App\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class VacancyController extends Controller
 {
@@ -13,10 +14,12 @@ class VacancyController extends Controller
         $dataVacancys = Vacancy::get();
         return view('admin.vacancies', compact('dataVacancys'));
     }
+
     public function vacancy_form(){
         $dataVacancy = [];
         return view('admin.vacancy_form', compact('dataVacancy'));
     }
+
     public function savevacancy(Request $request)
     {
         $request->file('image')->store('unloads', 'public');
@@ -34,6 +37,7 @@ class VacancyController extends Controller
         ]);
         return back();
     }
+
     public function edit_vacancy($id)
     {
         $dataVacancy = Vacancy::where('id', $id)->first();
@@ -44,5 +48,9 @@ class VacancyController extends Controller
     {
         Vacancy::where('id', $id)->delete();
         return back();
+    }
+    public function compose(View $view)
+    {
+        $view->with('header', $this->id->count());
     }
 }

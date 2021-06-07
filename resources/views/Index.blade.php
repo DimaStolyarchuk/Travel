@@ -13,9 +13,9 @@
                                     <a href="portfolio-item.html"><img src="{{ asset('storage/'. $dataHome->image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
                                 </div>
                                 <h2 class="entry-title"><a rel="bookmark">{{ $dataHome->title }}</a></h2>
-                                <a class='portfoliotype' href='portfolio-category.html'>Місцевий калорит</a>
-                                <a class='portfoliotype' href='portfolio-category.html'>Розваги</a>
-                                <a class='portfoliotype' href='portfolio-category.html'>Страви</a>
+                                @foreach($dataHome->infos as $info)
+                                    <a class='portfoliotype' href='portfolio-category.html'>{{ $info->description }}</a>
+                                @endforeach
                             </header>
                         </article>
                         @endforeach

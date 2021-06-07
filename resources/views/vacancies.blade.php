@@ -5,22 +5,22 @@
         <div id="content" class="site-content">
             <div id="primary" class="content-area column two-thirds single-portfolio">
                 <main id="main" class="site-main">
-                    @foreach($dataVacancys as $dataVacancy)
-                        <h1 class="entry-title">{{ $dataVacancy->title }}</h1>
+
+                        <h1 class="entry-title">{{ $dataVacancys->title }}</h1>
                     <article class="portfolio hentry">
                         <header class="entry-header">
                             <div class="entry-thumbnail">
-                                <p><img src="{{ asset('storage/'. $dataVacancy->image) }}"></p>
+                                <p><img src="{{ asset('storage/'. $dataVacancys->image) }}"></p>
                             </div>
                         </header>
                         <div class="entry-content">
                             <p>
-                                {{ $dataVacancy->description }}
+                                {{ $dataVacancys->description }}
                             </p>
                         </div>
                     </article>
                     <!-- .navigation -->
-                    @endforeach
+
                 </main>
                 <!-- #main -->
             </div>

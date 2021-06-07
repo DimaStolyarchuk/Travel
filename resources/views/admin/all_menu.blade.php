@@ -38,5 +38,10 @@
                 <span class="menu-title">КОНТАКТИ(CONTACTS)</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_info') }}">
+                <span class="menu-title">Інформація(INFO)</span>
+            </a>
+        </li>
     </ul>
 </nav>

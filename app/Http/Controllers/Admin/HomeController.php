@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Home;
 use App\Http\Controllers\Controller;
+use App\Info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -21,24 +22,25 @@ class HomeController extends Controller
     {
         $request->file('image')->store('unloads', 'public');
         $dataHome = $request->all();
-        Home::updateOrCreate([
+        $home = Home::updateOrCreate([
             'id' => $dataHome['id'],
         ],[
             'image' => $request->file('image')->getClientOriginalName(),
             'title' => $dataHome['title'],
-            'description_1' => $dataHome['description_1'],
-            'description_2' => $dataHome['description_2'],
-            'description_3' => $dataHome['description_3'],
             'action' => $dataHome['action'],
             'priority' => $dataHome['priority'],
 
         ]);
+
+        $home->infos()->attach($dataHome['info_id']);
+
         return back();
     }
     public function edit_home($id)
     {
+        $dataInfos = Info::get();
         $dataHome = Home::where('id', $id)->first();
-        return view('admin.edit_home', compact('dataHome'));
+        return view('admin.edit_home', compact('dataHome','dataInfos'));
 
     }
 
