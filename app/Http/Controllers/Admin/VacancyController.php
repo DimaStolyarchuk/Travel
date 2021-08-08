@@ -49,6 +49,7 @@ class VacancyController extends Controller
         Vacancy::where('id', $id)->delete();
         return back();
     }
+
     public function compose(View $view)
     {
         $view->with('header', $this->id->count());

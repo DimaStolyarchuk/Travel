@@ -4,16 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Home;
 use App\Info;
+use App\InfoSait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class InfoController extends Controller
 {
     public function info(){
+
         $dataInfos = Info::get();
         return view('admin.info', compact('dataInfos'));
     }
+
     public function info_form(){
+
         $dataInfo = [];
         return view('admin.info_form', compact('dataInfo'));
     }
@@ -41,5 +46,10 @@ class InfoController extends Controller
     {
         Info::where('id', $id)->delete();
         return back();
+    }
+
+    public function compose(View $view)
+    {
+        $view->with('header', $this->id->count());
     }
 }

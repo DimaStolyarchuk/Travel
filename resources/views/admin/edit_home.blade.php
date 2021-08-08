@@ -29,7 +29,7 @@
                                                 <label for="fname" >Зображення</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" name="image" class="form-control" id="fname" value="{{$dataHome->image ?? ''}}">
-                                                    <input type="hidden" name="image" value="{{$dataHome->image}}">
+                                                    <input type="hidden" name="image_2" value="{{$dataHome->image}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -43,7 +43,7 @@
                                                 <div class="col-sm-9">
                                                     <select name="info_id[]" multiple>
                                                         @foreach($dataInfos as $dataInfo)
-                                                            <option value="{{ $dataInfo->id ?? ''}}">{{ $dataInfo->description ?? ''}}</option>
+                                                            <option value="{{ $dataInfo->id ?? ''}}" @if($dataInfo->isInfoSelect($infos)) selected @endif>{{ $dataInfo->description ?? ''}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

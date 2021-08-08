@@ -41,6 +41,16 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="email1">Інформація</label>
+                                                <div class="col-sm-9">
+                                                    <select name="info_id[]" multiple>
+                                                        @foreach($dataInfos as $dataInfo)
+                                                            <option value="{{ $dataInfo->id ?? ''}}">{{ $dataInfo->description ?? ''}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label for="email1">Активність</label>
                                                 <div class="col-sm-9">
                                                     <select name="action">

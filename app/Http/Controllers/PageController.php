@@ -7,6 +7,8 @@ use App\Blog;
 use App\ContactMap;
 use App\Contacts;
 use App\Home;
+use App\Info;
+use App\InfoSait;
 use App\People;
 use App\Tours;
 use App\Vacancy;
@@ -14,10 +16,19 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $DataHomes = Home::get();
-        return view('index',compact('DataHomes'));
+        if ($request->get('id'))
+        {
+            $relation = Info::where('id', $request->get('id'))->with('homes')->first();
+            $DataHomes = $relation->homes;
+        } else {
+            $DataHomes = Home::get();
+        }
+        $isInfoSelect = Info::get();
+
+        return view('index', compact('isInfoSelect', 'DataHomes', 'dataInfo'));
+
     }
 
     public function about()
@@ -39,7 +50,7 @@ class PageController extends Controller
 
     public function vacancies($id)
     {
-        //$dataVacancys = Vacancy::where('id', $id)->first();
+
         $dataVacancys = Vacancy::find($id);
         return view('vacancies', compact('dataVacancys'));
     }
@@ -48,5 +59,12 @@ class PageController extends Controller
     {
         $dataContacts = Contacts::get();
         return view('contact', compact('dataContacts'));
+    }
+
+    public function info()
+    {
+        $DataHomes = Home::get();
+        $dataInfo = InfoSait::get();
+        return view('info', compact('dataInfo', 'DataHomes'));
     }
 }

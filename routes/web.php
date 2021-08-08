@@ -21,6 +21,7 @@ Route::get('/tours', 'PageController@tours')->name('tours');
 Route::get('/blog', 'PageController@blog')->name('blog');
 Route::get('/vacancies/{id}', 'PageController@vacancies')->name('vacancies');
 Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/info', 'PageController@info')->name('info');
 
 Route::get('/admin', 'Admin\AdminHomeController@index')->name('index');
 

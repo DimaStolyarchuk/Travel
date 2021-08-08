@@ -5,17 +5,20 @@
         <div id="content" class="site-content">
             <div id="primary" class="content-area column full">
                 <main id="main" class="site-main">
+                    @foreach($isInfoSelect as $dataInfo)
+                    <li><a href="{{ route('home_index', ['id' => $dataInfo->id]) }}"> {{ $dataInfo->description }} </a></li>
+                    @endforeach
                     <div class="grid portfoliogrid">
                         @foreach($DataHomes as $dataHome)
-                        <article class="hentry">
+                            <p> <article class="hentry"> </p>
                             <header class="entry-header">
-                                <div class="entry-thumbnail">
-                                    <a href="portfolio-item.html"><img src="{{ asset('storage/'. $dataHome->image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+                                <div class="entry-title">
+                                    <a><img src="{{ asset('storage/'. $dataHome->image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
                                 </div>
                                 <h2 class="entry-title"><a rel="bookmark">{{ $dataHome->title }}</a></h2>
-                                @foreach($dataHome->infos as $info)
-                                    <a class='portfoliotype' href='portfolio-category.html'>{{ $info->description }}</a>
-                                @endforeach
+{{--                                @foreach($dataHome->infos as $info)--}}
+{{--                                    <a class='portfoliotype' href='portfolio-category.html'>{{ $info->description }}</a>--}}
+{{--                                @endforeach--}}
                             </header>
                         </article>
                         @endforeach

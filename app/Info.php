@@ -14,6 +14,15 @@ class Info extends Model
     {
         return $this->belongsToMany(Home::class);
     }
-
-
+    public function isInfoSelect($data)
+    {
+        foreach ($data as $value)
+        {
+            if ( $value['id'] == $this->id) {
+                return true;
+                break;
+            }
+        }
+        return false;
+    }
 }
